@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.star-text {
+  color: #6c2b85;
+  font-size: 16px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.user-text {
+  color: #5058c3;
+  font-size: 16px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 700;
+  word-wrap: break-word;
+}
+
+.content-text {
+  color: #262626;
+  font-size: 14px;
+  font-family: Urbanist, sans-serif;
+  font-weight: 400;
+  letter-spacing: 1.05px;
+  word-wrap: break-word;
+}
+
+/* Add this in your global stylesheet */
+@media screen and (min-width: 1080px) and (min-height: 1920px) {
+  .width-large {
+    width: 750px !important;
+    max-width: 750px !important;
+  }
+
+  .height-large {
+    height: 1100px !important;
+  }
+
+  .button-top {
+    top: 130px !important;
+  }
+}
+
+@media screen and (max-width: 1079px) and (max-height: 1919px) {
+  .width-large {
+    width: 300px !important;
+  }
+
+  .height-large {
+    height: 450px !important;
+  }
+
+  .button-top {
+    top: 60px !important;
+  }
+}
+
+/* min witdh 2560px */
+@media screen and (min-width: 2560px) {
+  .width-large {
+    width: 300px !important;
+    max-width: 300px !important;
+  }
+
+  .height-large {
+    height: 450px !important;
+  }
+}
