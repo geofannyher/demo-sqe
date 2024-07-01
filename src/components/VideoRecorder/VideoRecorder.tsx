@@ -1,9 +1,4 @@
-const VideoRecorder = ({
-  isRecording,
-  onRecordStart,
-  onRecordStop,
-  videoSrc,
-}: any) => {
+const VideoRecorder = ({ videoSrc }: any) => {
   return (
     <>
       <video

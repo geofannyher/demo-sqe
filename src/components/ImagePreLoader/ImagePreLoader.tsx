@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-const ImagePreLoader = ({ src, alt, ...rest }: any) => {
+const ImagePreLoader = ({ src, alt }: any) => {
   useEffect(() => {
-    const image = document.createElement("img");
+    const image: any = document.createElement("img");
     image.src = src;
     image.alt = alt;
     image.preload = "auto";
