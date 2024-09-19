@@ -27,7 +27,7 @@ const Star = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [voiceId] = useState("W0hommVzZRi2WK1JWt3J");
   const [model] = useState("gpt-4o");
-  const [starName] = useState("davina_definite");
+  const [starName] = useState("rangga_sqe");
   const [results, setResults] = useState<any>([]);
   const [stream, setStream] = useState<any>(null);
   const [audioChunks, setAudioChunks] = useState([]);
