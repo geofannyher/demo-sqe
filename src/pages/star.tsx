@@ -2,15 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import MicIcon from "@mui/icons-material/Mic";
 import StopIcon from "@mui/icons-material/Stop";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import AlertSnackbar from "../components/AlertSnackbar/Alertsnackbar";
 import VideoRecorder from "../components/VideoRecorder/VideoRecorder";
-import {
-  chatbot,
-  resetChatbot,
-  speechToText,
-  textToSpeech,
-} from "../services/ApiService";
+import { chatbot, speechToText, textToSpeech } from "../services/ApiService";
 import logo from "../assets/logo.svg";
 import TypewriterEffect from "../components/TypewriterEffect/TypewriterEffect";
 
@@ -25,7 +19,7 @@ const Star = () => {
   const [buttonColor, setButtonColor] = useState("#6C2B85");
   const [buttonIcon, setButtonIcon] = useState(<MicIcon />);
   const [showVideo, setShowVideo] = useState(false);
-  const [voiceId] = useState("W0hommVzZRi2WK1JWt3J");
+  const [voiceId] = useState("p4Q7LAvLfBj7ACLNCF2K");
   const [model] = useState("gpt-4o");
   const [starName] = useState("rangga_sqe");
   const [results, setResults] = useState<any>([]);
@@ -235,8 +229,8 @@ const Star = () => {
                 isRecording={isRecording}
                 videoSrc={
                   showVideo
-                    ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1725953708/rbykdqcq4ltnwyinwgz8.mp4"
-                    : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1725342398/pgttae07bfixrpqezq9h.mp4"
+                    ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727975/x6sip8w4edmg3exxu9zj.mp4"
+                    : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
                 }
               />
 
