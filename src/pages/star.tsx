@@ -223,7 +223,6 @@ const Star = () => {
               <RestartAltIcon />
             </button> */}
 
-            {/* Video Player */}
             <div className="relative">
               <VideoRecorder
                 isRecording={isRecording}
@@ -233,34 +232,34 @@ const Star = () => {
                     : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
                 }
               />
-
               {/* User and Star Text Container */}
               {results && results.length > 0 && (
-                <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-black bg-opacity-50 text-white z-20 flex flex-col justify-center items-center">
-                  {results.map((result: any, _: any) => (
-                    <div
-                      // key={result.id}
-                      className={`w-full mb-3 px-4 ${
-                        result.status === "user" ? "text-right" : "text-left"
-                      }`}
-                    >
-                      <p
-                        className={
-                          result.status === "user" ? "user-text" : "star-text"
-                        }
+                <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-black bg-opacity-50 text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
+                  <div className="w-full h-full px-4 space-y-3">
+                    {results.map((result: any, _: any) => (
+                      <div
+                        className={`w-full px-4 ${
+                          result.status === "user" ? "text-right" : "text-left"
+                        }`}
                       >
-                        {result.title.charAt(0).toUpperCase() +
-                          result.title.slice(1)}
-                      </p>
-                      <div className="content-text">
-                        {result.id === newestMessageId ? (
-                          <TypewriterEffect text={result.result} />
-                        ) : (
-                          <span className="text-white">{result.result}</span>
-                        )}
+                        <p
+                          className={
+                            result.status === "user" ? "user-text" : "star-text"
+                          }
+                        >
+                          {result.title.charAt(0).toUpperCase() +
+                            result.title.slice(1)}
+                        </p>
+                        <div className="content-text">
+                          {result.id === newestMessageId ? (
+                            <TypewriterEffect text={result.result} />
+                          ) : (
+                            <span className="text-white">{result.result}</span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -268,7 +267,7 @@ const Star = () => {
             <button
               onClick={() => toggleRecording()}
               onContextMenu={(e) => e.preventDefault()}
-              className="relative left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold p-2 rounded-full my-4 select-none"
+              className="relative left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold p-2 rounded-full my-4 select-none overflow-y-auto"
               style={{
                 top: "-20px",
                 zIndex: 30,
