@@ -20,7 +20,7 @@ const TypewriterEffect = ({ text }: any) => {
     return () => clearInterval(intervalId);
   }, [text]);
 
-  return <span className="text-gray-500">{displayedText}</span>;
+  return <span className="text-white">{displayedText}</span>;
 };
 
 export default TypewriterEffect;

@@ -2,11 +2,11 @@ import axios from "axios";
 
 export const speechToText = async (base64Audio: any) => {
   const response = await axios.post(
-    import.meta.env.REACT_APP_API_TTS_STT + "stt",
+    import.meta.env.VITE_APP_API_TTS_STT + "stt",
     {
       model: "whisper-1",
       file_base64: base64Audio,
-      temperature: 0.0,
+      temperature: 1,
       language: "id",
     }
   );
@@ -16,7 +16,7 @@ export const speechToText = async (base64Audio: any) => {
 
 export const textToSpeech = async (text: string, voice_id: string) => {
   const response = await axios.post(
-    import.meta.env.REACT_APP_API_TTS_STT + "tts",
+    import.meta.env.VITE_APP_API_TTS_STT + "tts",
     {
       voice_id: voice_id,
       message: text,
@@ -33,7 +33,7 @@ export const chatbot = async (
   model: string
 ) => {
   const response = await axios.post(
-    import.meta.env.REACT_APP_API_CHAT + "chat",
+    import.meta.env.VITE_APP_API_CHAT + "chat",
     {
       id: id,
       star: star,
@@ -59,7 +59,7 @@ export const resetChatbot = async (id: string, star: string) => {
   };
 
   axios
-    .post(import.meta.env.REACT_APP_API_CHAT + "reset", data, config)
+    .post(import.meta.env.VITE_APP_API_CHAT + "reset", data, config)
     .then((response) => {
       console.log(response.data);
     })

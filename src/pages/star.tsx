@@ -5,8 +5,6 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import AlertSnackbar from "../components/AlertSnackbar/Alertsnackbar";
 import VideoRecorder from "../components/VideoRecorder/VideoRecorder";
-import rini from "../assets/Rini1.mp4";
-import riniidle from "../assets/RiniIdle.mp4";
 import {
   chatbot,
   resetChatbot,
@@ -27,9 +25,9 @@ const Star = () => {
   const [buttonColor, setButtonColor] = useState("#6C2B85");
   const [buttonIcon, setButtonIcon] = useState(<MicIcon />);
   const [showVideo, setShowVideo] = useState(false);
-  const [voiceId] = useState("I5uQJhcGBo9GPcOKOr0B");
-  const [model] = useState("gpt-4-1106-preview");
-  const [starName] = useState("Ibuk");
+  const [voiceId] = useState("W0hommVzZRi2WK1JWt3J");
+  const [model] = useState("gpt-4o");
+  const [starName] = useState("davina_definite");
   const [results, setResults] = useState<any>([]);
   const [stream, setStream] = useState<any>(null);
   const [audioChunks, setAudioChunks] = useState([]);
@@ -143,7 +141,7 @@ const Star = () => {
         setIsLoadingChatResponse(true);
 
         const chatResponse = await makeApiCall(
-          () => chatbot("1", resultText, "ibu", model),
+          () => chatbot("dev", resultText, starName, model),
           "Error during chatbot processing"
         );
 
@@ -198,11 +196,11 @@ const Star = () => {
     }
   };
 
-  const handleReset = async () => {
-    setIsRecording(false);
-    setResults([]);
-    makeApiCall(() => resetChatbot("1", "ibu"), "Error during chatbot reset");
-  };
+  // const handleReset = async () => {
+  //   setIsRecording(false);
+  //   setResults([]);
+  //   makeApiCall(() => resetChatbot("1", "ibu"), "Error during chatbot reset");
+  // };
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
@@ -222,26 +220,64 @@ const Star = () => {
               window.location.href = "/choose-star";
             }}
           />
-          <div className="mb-[-40px]">
-            <button
+          <div className=" relative">
+            {/* <button
               onClick={handleReset}
-              className="button-top btn-1080x1920 absolute right-0 bg-gray-300 hover:bg-gray-400 text-black font-bold py-1 px-2 rounded-full focus:outline-none focus:shadow-outline"
+              className="top-0 absolute right-0 bg-gray-300 hover:bg-gray-400 text-black font-bold py-1 px-2 rounded-full focus:outline-none focus:shadow-outline"
               style={{ top: "100px", zIndex: 10 }}
             >
               <RestartAltIcon />
-            </button>
-            {showVideo ? (
-              <VideoRecorder isRecording={isRecording} videoSrc={rini} />
-            ) : (
-              <VideoRecorder isRecording={isRecording} videoSrc={riniidle} />
-            )}
+            </button> */}
+
+            {/* Video Player */}
+            <div className="relative">
+              <VideoRecorder
+                isRecording={isRecording}
+                videoSrc={
+                  showVideo
+                    ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1725953708/rbykdqcq4ltnwyinwgz8.mp4"
+                    : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1725342398/pgttae07bfixrpqezq9h.mp4"
+                }
+              />
+
+              {/* User and Star Text Container */}
+              {results && results.length > 0 && (
+                <div className="absolute bottom-0 left-0 right-0 h-[50%] bg-black bg-opacity-50 text-white z-20 flex flex-col justify-center items-center">
+                  {results.map((result: any, _: any) => (
+                    <div
+                      // key={result.id}
+                      className={`w-full mb-3 px-4 ${
+                        result.status === "user" ? "text-right" : "text-left"
+                      }`}
+                    >
+                      <p
+                        className={
+                          result.status === "user" ? "user-text" : "star-text"
+                        }
+                      >
+                        {result.title.charAt(0).toUpperCase() +
+                          result.title.slice(1)}
+                      </p>
+                      <div className="content-text">
+                        {result.id === newestMessageId ? (
+                          <TypewriterEffect text={result.result} />
+                        ) : (
+                          <span className="text-white">{result.result}</span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
             <button
               onClick={() => toggleRecording()}
               onContextMenu={(e) => e.preventDefault()}
               className="relative left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold p-2 rounded-full my-4 select-none"
               style={{
                 top: "-20px",
-                zIndex: 10,
+                zIndex: 30,
                 touchAction: "manipulation",
                 WebkitTapHighlightColor: "transparent",
                 outline: "none",
@@ -254,31 +290,6 @@ const Star = () => {
             </button>
           </div>
           <p className="text-center text-[#293060] font-bold">{buttonText}</p>
-          <div className="w-full text-left overflow-auto">
-            {results.map((result: any, _: any) => (
-              <div
-                key={result.id}
-                className={`mt-8 mb-3 ${
-                  result.status === "user" ? "text-right" : "text-left"
-                }`}
-              >
-                <p
-                  className={
-                    result.status === "user" ? "user-text" : "star-text"
-                  }
-                >
-                  {result.title.charAt(0).toUpperCase() + result.title.slice(1)}
-                </p>
-                <div className="content-text">
-                  {result.id === newestMessageId ? (
-                    <TypewriterEffect text={result.result} />
-                  ) : (
-                    <span className="text-gray-500">{result.result}</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
       <AlertSnackbar
