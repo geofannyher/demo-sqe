@@ -4,8 +4,14 @@ import StopIcon from "@mui/icons-material/Stop";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import AlertSnackbar from "../components/AlertSnackbar/Alertsnackbar";
 import VideoRecorder from "../components/VideoRecorder/VideoRecorder";
-import { chatbot, speechToText, textToSpeech } from "../services/ApiService";
+import {
+  chatbot,
+  resetChatbot,
+  speechToText,
+  textToSpeech,
+} from "../services/ApiService";
 import TypewriterEffect from "../components/TypewriterEffect/TypewriterEffect";
+import { ReplayOutlined, ResetTv } from "@mui/icons-material";
 
 const Star = () => {
   const [startTime, setStartTime] = useState<any>(null);
@@ -134,7 +140,7 @@ const Star = () => {
         setIsLoadingChatResponse(true);
 
         const chatResponse = await makeApiCall(
-          () => chatbot("dev", resultText, starName, model),
+          () => chatbot("1", resultText, starName, model),
           "Error during chatbot processing"
         );
 
@@ -189,11 +195,16 @@ const Star = () => {
     }
   };
 
-  // const handleReset = async () => {
-  //   setIsRecording(false);
-  //   setResults([]);
-  //   makeApiCall(() => resetChatbot("1", "ibu"), "Error during chatbot reset");
-  // };
+  const handleReset = async () => {
+    setIsRecording(false);
+    setResults([]);
+    makeApiCall(
+      () => resetChatbot("1", starName),
+      "Error during chatbot reset"
+    );
+    setOpenSnackbar(!openSnackbar);
+    setSnackbarMessage("success reset");
+  };
 
   const handleCloseSnackbar = () => {
     setOpenSnackbar(false);
@@ -201,18 +212,20 @@ const Star = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen  mt-5">
-      <div className="relative h-screen flex justify-center items-center">
-        <div className="absolute h-screen mt-5 flex flex-col items-center">
-          <div className=" relative">
-            {/* <button
-              onClick={handleReset}
-              className="top-0 absolute right-0 bg-gray-300 hover:bg-gray-400 text-black font-bold py-1 px-2 rounded-full focus:outline-none focus:shadow-outline"
-              style={{ top: "100px", zIndex: 10 }}
+    <div className="flex flex-col justify-center items-center h-[100dvh]">
+      <div className="relative flex justify-center items-center">
+        <div className="absolute mt-5 flex flex-col items-center">
+          <div className="h-[600px] md:min-h-[800px] relative">
+            <button
+              onClick={() => handleReset()}
+              className="flex shadow-sm duration-300 hover:bg-violet-900 items-center justify-center text-white absolute -right-2 z-50 -top-5 rounded-full w-10 h-10 bg-violet-500"
             >
-              <RestartAltIcon />
-            </button> */}
-
+              <ReplayOutlined
+                style={{
+                  fontSize: 18,
+                }}
+              />
+            </button>
             <div className="relative">
               <VideoRecorder
                 isRecording={isRecording}
@@ -222,55 +235,52 @@ const Star = () => {
                     : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
                 }
               />
-              {/* User and Star Text Container */}
-              {results && results.length > 0 && (
-                <div className="absolute bottom-0 left-0 right-0 h-[38%] bg-black bg-opacity-50 text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
-                  <div className="w-full h-full px-4 space-y-3">
-                    {results.map((result: any, _: any) => (
-                      <div
-                        className={`w-full px-4 ${
-                          result.status === "user" ? "text-right" : "text-left"
-                        }`}
-                      >
-                        <p
-                          className={
-                            result.status === "user" ? "user-text" : "star-text"
-                          }
-                        >
-                          {result.title.charAt(0).toUpperCase() +
-                            result.title.slice(1)}
-                        </p>
-                        <div className="content-text">
-                          {result.id === newestMessageId ? (
-                            <TypewriterEffect text={result.result} />
-                          ) : (
-                            <span className="text-white">{result.result}</span>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <button
+                onClick={() => toggleRecording()}
+                onContextMenu={(e) => e.preventDefault()}
+                className="absolute left-1/2 transform -translate-x-1/2 bottom-14 md:-bottom-2 lg:-bottom-2 text-white font-bold p-2 rounded-full select-none"
+                style={{
+                  zIndex: 100,
+                  touchAction: "manipulation",
+                  WebkitTapHighlightColor: "transparent",
+                  outline: "none",
+                  width: "60px",
+                  height: "60px",
+                  backgroundColor: buttonColor,
+                }}
+              >
+                <span style={{ pointerEvents: "none" }}>{buttonIcon}</span>
+              </button>
             </div>
-
-            <button
-              onClick={() => toggleRecording()}
-              onContextMenu={(e) => e.preventDefault()}
-              className="relative left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold p-2 rounded-full my-4 select-none overflow-y-auto"
-              style={{
-                top: "-20px",
-                zIndex: 30,
-                touchAction: "manipulation",
-                WebkitTapHighlightColor: "transparent",
-                outline: "none",
-                width: "50px",
-                height: "50px",
-                backgroundColor: buttonColor,
-              }}
-            >
-              <span style={{ pointerEvents: "none" }}>{buttonIcon}</span>
-            </button>
+            {/* User and Star Text Container */}
+            <div className="absolute bottom-0 left-0 right-0 h-[40%] rounded-bl-lg rounded-br-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
+              <div className="w-full h-full p-5 space-y-3">
+                {results.map((result: any, _: any) => (
+                  <div className={`w-full px-4 text-left`}>
+                    {/* <div
+                    className={`w-full px-4 ${
+                      result.status === "user" ? "text-right" : "text-left"
+                    }`}
+                  > */}
+                    <p
+                      className={
+                        result.status === "user" ? "user-text" : "star-text"
+                      }
+                    >
+                      {result.title.charAt(0).toUpperCase() +
+                        result.title.slice(1)}
+                    </p>
+                    <div className="content-text">
+                      {result.id === newestMessageId ? (
+                        <TypewriterEffect text={result.result} />
+                      ) : (
+                        <span className="text-white">{result.result}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
           <p className="text-center text-[#293060] font-bold">{buttonText}</p>
         </div>

@@ -8,7 +8,7 @@ const VideoRecorder = ({ videoSrc }: any) => {
         style={{
           border: "3px solid #293060",
           width: "600px",
-          height: "750px",
+          height: "500px",
           objectFit: "cover",
         }}
         autoPlay={true}
