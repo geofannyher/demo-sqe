@@ -215,7 +215,7 @@ const Star = () => {
     <div className="flex flex-col justify-center items-center h-[100dvh]">
       <div className="relative flex justify-center items-center">
         <div className="absolute mt-5 flex flex-col items-center">
-          <div className="h-[600px] md:min-h-[800px] relative">
+          <div className="h-[95dvh] relative">
             <button
               onClick={() => handleReset()}
               className="flex shadow-sm duration-300 hover:bg-violet-900 items-center justify-center text-white absolute -right-2 z-50 -top-5 rounded-full w-10 h-10 bg-violet-500"
@@ -231,14 +231,14 @@ const Star = () => {
                 isRecording={isRecording}
                 videoSrc={
                   showVideo
-                    ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727975/x6sip8w4edmg3exxu9zj.mp4"
+                    ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1727071397/z6q8wlfzwcgmin1qtn1w.mp4"
                     : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
                 }
               />
               <button
                 onClick={() => toggleRecording()}
                 onContextMenu={(e) => e.preventDefault()}
-                className="absolute left-1/2 transform -translate-x-1/2 bottom-14 md:-bottom-2 lg:-bottom-2 text-white font-bold p-2 rounded-full select-none"
+                className="absolute left-1/2 transform -translate-x-1/2 bottom-0 text-white font-bold p-2 rounded-full select-none"
                 style={{
                   zIndex: 100,
                   touchAction: "manipulation",
@@ -253,7 +253,7 @@ const Star = () => {
               </button>
             </div>
             {/* User and Star Text Container */}
-            <div className="absolute bottom-0 left-0 right-0 h-[40%] rounded-bl-lg rounded-br-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
+            <div className="absolute bottom-0 left-0 right-0 md:h-[38%] lg:h-[38%] h-[50%] rounded-bl-lg rounded-br-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
               <div className="w-full h-full p-5 space-y-3">
                 {results.map((result: any, _: any) => (
                   <div className={`w-full px-4 text-left`}>
