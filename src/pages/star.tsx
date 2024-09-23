@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { ReplayOutlined } from "@mui/icons-material";
 import MicIcon from "@mui/icons-material/Mic";
-import StopIcon from "@mui/icons-material/Stop";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import StopIcon from "@mui/icons-material/Stop";
+import { useEffect, useRef, useState } from "react";
 import AlertSnackbar from "../components/AlertSnackbar/Alertsnackbar";
+import TypewriterEffect from "../components/TypewriterEffect/TypewriterEffect";
 import VideoRecorder from "../components/VideoRecorder/VideoRecorder";
 import {
   chatbot,
@@ -10,8 +12,6 @@ import {
   speechToText,
   textToSpeech,
 } from "../services/ApiService";
-import TypewriterEffect from "../components/TypewriterEffect/TypewriterEffect";
-import { ReplayOutlined, ResetTv } from "@mui/icons-material";
 
 const Star = () => {
   const [startTime, setStartTime] = useState<any>(null);
