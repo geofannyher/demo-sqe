@@ -1,4 +1,3 @@
-import { ReplayOutlined } from "@mui/icons-material";
 import MicIcon from "@mui/icons-material/Mic";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import StopIcon from "@mui/icons-material/Stop";
@@ -241,7 +240,7 @@ const Star = () => {
               <span style={{ pointerEvents: "none" }}>{buttonIcon}</span>
             </button>
             <span className="absolute left-1/2 transform -translate-x-1/2 bottom-20 text-white font-bold rounded-full select-none">
-              Press the button to start talking
+              {buttonText}
             </span>
           </div>
         </div>
