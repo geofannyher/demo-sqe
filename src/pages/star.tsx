@@ -218,7 +218,7 @@ const Star = () => {
             isRecording={isRecording}
             videoSrc={
               showVideo
-                ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1727071397/z6q8wlfzwcgmin1qtn1w.mp4"
+                ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1727185191/j6sbsrcht5dodxgjxpoc.mp4"
                 : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
             }
           />
@@ -249,7 +249,7 @@ const Star = () => {
         <div className="relative h-[900px] w-full overflow-scroll rounded-br-lg rounded-tr-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
           <button
             onClick={() => handleReset()}
-            className="flex shadow-sm items-center bg-violet-500 rounded-full font-semibold justify-center text-white fixed left-[70%] transform -translate-x-1/2 z-50 bottom-28 px-4 py-2"
+            className="flex shadow-sm items-center bg-violet-500 rounded-full font-semibold justify-center text-white fixed left-[63%] transform -translate-x-1/2 z-50 bottom-28 px-4 py-2"
           >
             click to reset
           </button>
