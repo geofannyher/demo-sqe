@@ -212,77 +212,68 @@ const Star = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-[100dvh]">
-      <div className="relative flex justify-center items-center">
-        <div className="absolute mt-5 flex flex-col items-center">
-          <div className="h-[95dvh] relative">
+    <div className="flex justify-center items-center h-[100dvh]">
+      <div className="flex container max-w-5xl relative">
+        <div className="relative">
+          <VideoRecorder
+            isRecording={isRecording}
+            videoSrc={
+              showVideo
+                ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1727071397/z6q8wlfzwcgmin1qtn1w.mp4"
+                : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
+            }
+          />
+          <div>
             <button
-              onClick={() => handleReset()}
-              className="flex shadow-sm duration-300 hover:bg-violet-900 items-center justify-center text-white absolute -right-2 z-50 -top-5 rounded-full w-10 h-10 bg-violet-500"
+              onClick={() => toggleRecording()}
+              onContextMenu={(e) => e.preventDefault()}
+              className="absolute left-1/2 transform -translate-x-1/2 bottom-28 text-white font-bold p-2 rounded-full select-none"
+              style={{
+                zIndex: 100,
+                touchAction: "manipulation",
+                WebkitTapHighlightColor: "transparent",
+                outline: "none",
+                width: "60px",
+                height: "60px",
+                backgroundColor: buttonColor,
+              }}
             >
-              <ReplayOutlined
-                style={{
-                  fontSize: 18,
-                }}
-              />
+              <span style={{ pointerEvents: "none" }}>{buttonIcon}</span>
             </button>
-            <div className="relative">
-              <VideoRecorder
-                isRecording={isRecording}
-                videoSrc={
-                  showVideo
-                    ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1727071397/z6q8wlfzwcgmin1qtn1w.mp4"
-                    : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
-                }
-              />
-              <button
-                onClick={() => toggleRecording()}
-                onContextMenu={(e) => e.preventDefault()}
-                className="absolute left-1/2 transform -translate-x-1/2 bottom-0 text-white font-bold p-2 rounded-full select-none"
-                style={{
-                  zIndex: 100,
-                  touchAction: "manipulation",
-                  WebkitTapHighlightColor: "transparent",
-                  outline: "none",
-                  width: "60px",
-                  height: "60px",
-                  backgroundColor: buttonColor,
-                }}
-              >
-                <span style={{ pointerEvents: "none" }}>{buttonIcon}</span>
-              </button>
-            </div>
-            {/* User and Star Text Container */}
-            <div className="absolute bottom-0 left-0 right-0 md:h-[38%] lg:h-[38%] h-[50%] rounded-bl-lg rounded-br-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
-              <div className="w-full h-full p-5 space-y-3">
-                {results.map((result: any, _: any) => (
-                  <div className={`w-full px-4 text-left`}>
-                    {/* <div
-                    className={`w-full px-4 ${
-                      result.status === "user" ? "text-right" : "text-left"
-                    }`}
-                  > */}
-                    <p
-                      className={
-                        result.status === "user" ? "user-text" : "star-text"
-                      }
-                    >
-                      {result.title.charAt(0).toUpperCase() +
-                        result.title.slice(1)}
-                    </p>
-                    <div className="content-text">
-                      {result.id === newestMessageId ? (
-                        <TypewriterEffect text={result.result} />
-                      ) : (
-                        <span className="text-white">{result.result}</span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-20 text-white font-bold rounded-full select-none">
+              Press the button to start talking
+            </span>
           </div>
-          <p className="text-center text-[#293060] font-bold">{buttonText}</p>
+        </div>
+
+        {/* User and Star Text Container */}
+        <div className="relative h-[900px] w-full overflow-scroll rounded-br-lg rounded-tr-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
+          <button
+            onClick={() => handleReset()}
+            className="flex shadow-sm items-center bg-violet-500 rounded-full font-semibold justify-center text-white fixed left-[70%] transform -translate-x-1/2 z-50 bottom-28 px-4 py-2"
+          >
+            click to reset
+          </button>
+          <div className="w-full h-full p-5 space-y-3">
+            {results.map((result: any, _: any) => (
+              <div className={`w-full px-4 text-left`}>
+                <p
+                  className={
+                    result.status === "user" ? "user-text" : "star-text"
+                  }
+                >
+                  {result.title.charAt(0).toUpperCase() + result.title.slice(1)}
+                </p>
+                <div className="content-text">
+                  {result.id === newestMessageId ? (
+                    <TypewriterEffect text={result.result} />
+                  ) : (
+                    <span className="text-white">{result.result}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <AlertSnackbar
