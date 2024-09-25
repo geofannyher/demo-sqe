@@ -219,7 +219,7 @@ const Star = () => {
             videoSrc={
               showVideo
                 ? "https://res.cloudinary.com/dcd1jeldi/video/upload/v1727185191/j6sbsrcht5dodxgjxpoc.mp4"
-                : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1726727897/rangga_idle.mp4"
+                : "https://res.cloudinary.com/dcd1jeldi/video/upload/v1727231631/msjkal3ks03ddrooqoug.mp4"
             }
           />
           <div>
