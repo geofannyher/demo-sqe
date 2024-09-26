@@ -211,8 +211,8 @@ const Star = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="flex flex-col md:flex-row lg:flex-row container max-w-5xl relative">
+    <div className="flex justify-center items-center h-[100dvh]">
+      <div className="flex flex-col md:flex-row lg:flex-row container max-w-3xl md:max-w-5xl relative">
         <div className="relative">
           <VideoRecorder
             isRecording={isRecording}
@@ -239,17 +239,17 @@ const Star = () => {
             >
               <span style={{ pointerEvents: "none" }}>{buttonIcon}</span>
             </button>
-            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-20 text-white font-bold rounded-full select-none">
+            <span className="absolute left-1/2 transform -translate-x-1/2 bottom-20 text-white font-bold rounded-full text-xs select-none">
               {buttonText}
             </span>
           </div>
         </div>
 
         {/* User and Star Text Container */}
-        <div className="relative h-[600px] w-full overflow-scroll rounded-br-lg rounded-tr-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
+        <div className="relative h-[600px] w-[500px]  md:h-[800px]  overflow-scroll rounded-br-lg rounded-tr-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
           <button
             onClick={() => handleReset()}
-            className="flex absolute translate-x-[10%] z-50 bottom-20 shadow-sm items-center bg-violet-500 rounded-full font-semibold justify-center text-white px-4 py-2"
+            className="flex absolute z-50 bottom-20 shadow-sm items-center bg-violet-500 rounded-full font-semibold justify-center text-white px-4 py-2"
           >
             click to reset
           </button>
