@@ -4,7 +4,7 @@ const VideoRecorder = ({ videoSrc }: any) => {
       <video
         src={videoSrc}
         controls={false}
-        className="rounded-lg border-[#293060]  rounded-tr-sm rounded-br-sm w-[500px] h-[500px] max-w-lg mx-auto"
+        className="rounded-lg border-[#293060] rounded-tr-sm rounded-br-sm w-[500px] h-[600px] max-w-lg mx-auto"
         style={{
           objectFit: "cover",
           objectPosition: "50% 100%",
