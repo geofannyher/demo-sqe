@@ -211,7 +211,7 @@ const Star = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[100dvh]">
+    <div className="flex justify-center items-center h-screen">
       <div className="flex flex-col md:flex-row lg:flex-row container max-w-5xl relative">
         <div className="relative">
           <VideoRecorder
