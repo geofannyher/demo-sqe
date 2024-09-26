@@ -246,7 +246,7 @@ const Star = () => {
         </div>
 
         {/* User and Star Text Container */}
-        <div className="relative h-[600px] w-[500px]  md:h-[800px]  overflow-scroll rounded-br-lg rounded-tr-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
+        <div className="relative h-[600px] w-[500px]  overflow-scroll rounded-br-lg rounded-tr-lg bg-black text-white z-20 flex flex-col justify-center items-center overflow-y-auto">
           <button
             onClick={() => handleReset()}
             className="flex absolute z-50 bottom-20 shadow-sm items-center bg-violet-500 rounded-full font-semibold justify-center text-white px-4 py-2"
