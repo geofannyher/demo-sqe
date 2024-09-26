@@ -7,7 +7,7 @@ const VideoRecorder = ({ videoSrc }: any) => {
         className="rounded-lg border-[#293060] rounded-tr-sm rounded-br-sm max-w-lg mx-auto"
         style={{
           width: "600px",
-          height: "900px",
+          height: "600px",
           objectFit: "cover",
         }}
         autoPlay={true}
